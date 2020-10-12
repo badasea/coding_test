@@ -3,12 +3,14 @@ import java.util.*;
 public class QueueArray_priority {
 	private static int size = 5;
 	private static int front = -1;
-	private static int rear = -1; 
+	private static int rear = -1;
+	private static int count = 0; 
 	private static char QueArr[] = new char[5];
 	
 	static Random r = new Random();
-	private static int priority = r.nextInt(4);
-
+	static private int priority = r.nextInt(4);
+	private static int ai[] = new int[5];
+	
 	public boolean isFull() {
 		return (rear == size - 1);
 	}
@@ -27,7 +29,9 @@ public class QueueArray_priority {
 			System.out.println("큐가 다 찼습니다.");
 		}
 		else {
-			QueArr[++rear] = pro;			
+			QueArr[++rear] = pro;
+			count++;
+			ai[count] = priority;
 		}
 	}
 
@@ -44,7 +48,7 @@ public class QueueArray_priority {
 	
 	public void Queprint() {
 		for (int i = front + 1; i<=rear; i++) {
-					System.out.print("( " + QueArr[i] + " , " + priority + " ) ");
+					System.out.print("( " + QueArr[i] + " , " + ai[i] + " ) ");
 					System.out.print(" -> ");
 		}
 		System.out.println("");
